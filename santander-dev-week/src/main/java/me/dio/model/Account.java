@@ -15,10 +15,11 @@ public class Account {
     private String number;
     private String agency;
 
-    @Column(scale = 13, precision = 2, nullable = false)
+    // 99999999999,99 -> precision e scale
+    @Column(precision = 13, scale = 2, nullable = false)
     private BigDecimal balance;
 
-    @Column(name = "additional_limit", scale = 13, precision = 2, nullable = false)
+    @Column(name = "additional_limit", precision = 13, scale = 2, nullable = false)
     private BigDecimal limit;
 
     public String getAgency() {
