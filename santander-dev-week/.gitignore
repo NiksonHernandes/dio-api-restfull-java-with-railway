@@ -35,6 +35,3 @@ bin/
 .DS_Store
 
 target/
-.git
-.gitignore
-Dockerfile
