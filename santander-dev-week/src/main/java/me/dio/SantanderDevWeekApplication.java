@@ -11,6 +11,7 @@ import java.util.Properties;
 
 @SpringBootApplication
 public class SantanderDevWeekApplication {
+	public String PORT = System.getenv("PORT");
 
 	public static void main(String[] args) {
 		SpringApplication.run(SantanderDevWeekApplication.class, args);
