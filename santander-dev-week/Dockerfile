@@ -1,19 +1,15 @@
+# Use the Eclipse temurin alpine official image
+# https://hub.docker.com/_/eclipse-temurin
 FROM eclipse-temurin:21-jdk-alpine
 
-# Diretório da aplicação
+# Create and change to the app directory.
 WORKDIR /app
 
-# Copia todo o projeto
+# Copy local code to the container image.
 COPY . ./
 
-# Dá permissão ao Maven Wrapper
-RUN chmod +x ./mvnw
-
-# Executa o build da aplicação
+# Build the app.
 RUN ./mvnw -DoutputFile=target/mvn-dependency-list.log -B -DskipTests clean dependency:list install
 
-# Expõe a porta (usada pelo Railway)
-EXPOSE 8080
-
-# Executa a aplicação
+# Run the app by dynamically finding the JAR file in the target directory
 CMD ["sh", "-c", "java -jar target/*.jar"]
